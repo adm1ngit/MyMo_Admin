@@ -10,7 +10,7 @@
 *.sqlite3
 *.db-shm
 *.db-wal
-
+*.idea
 ### Django ###
 *.log
 *.pot

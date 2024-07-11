@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     #Local Apps
     "admin_auth",
     "admin_controller",
+    "users",
 
     #Install Apps
     "rest_framework",
@@ -44,9 +45,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'conf.urls'
+ROOT_URLCONF = "conf.urls"
 
 AUTH_USER_MODEL = "admin_auth.CustomUser"
+
 
 TEMPLATES = [
     {
