@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .serializers import RegisterSerializer
+# from .serializers import RegisterSerializer
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login
 from .serializers import LoginSerializer
@@ -8,9 +8,9 @@ from rest_framework.response import Response
 
 User = get_user_model()
 
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = RegisterSerializer
+# class RegisterView(generics.CreateAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = RegisterSerializer
 
 class LoginView(views.APIView):
     def post(self, request, *args, **kwargs):

@@ -47,7 +47,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "conf.urls"
 
-AUTH_USER_MODEL = "admin_auth.CustomUser"
+
 
 
 TEMPLATES = [
