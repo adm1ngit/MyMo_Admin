@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser
 
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ('email', "password", "confirm_password")
+    list_display = ('email', "password", "password2")
     search_fields = ('email', 'password')
-
