@@ -1,16 +1,28 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth import login
-from .serializers import LoginSerializer
-from rest_framework import views, status
+from rest_framework import generics
+from rest_framework.status import HTTP_201_CREATED
+from .serializers import RegisterSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
-User = get_user_model()
+class RegisterView(generics.CreateAPIView):
+    serializer_class = RegisterSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({"message": "User registered successfully"}, status=HTTP_201_CREATED)
 
 
-class LoginView(views.APIView):
+class LoginView(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
-        serializer = LoginSerializer(data=request.data, context={'request': request})
+        serializer = self.serializer_class(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
-        login(request, user)
-        return Response({"detail": "Successfully logged in."}, status=status.HTTP_200_OK)
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'email': user.email
+        })
