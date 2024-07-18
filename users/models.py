@@ -38,3 +38,17 @@ class myPetition(models.Model):
 
 class currentInstitute(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+class userInstitues(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    phone_number = models.CharField(max_length=20)
+    faculty = models.CharField(max_length=255)
+    institute = models.CharField(max_length=255)
+    routeCode = models.CharField(max_length=255, null=True, blank=True)
+    routeName = models.CharField(max_length=255)
+    routeType = models.CharField(max_length=120)
+    language = models.CharField(max_length=120)
+
+    def __str__(self):
+        return self.first_name

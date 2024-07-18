@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-z=v*p=*&hnra%$p5-1pa3338$*6kg+seo-n1ki=*-%y3xjgb2q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.114"]
+ALLOWED_HOSTS = ["192.168.0.111"]
 
 
 # Application definition
@@ -33,16 +33,21 @@ INSTALLED_APPS = [
 
     #Install Apps
     "rest_framework",
-    "rest_framework.authtoken"
+    'django_filters',
+    "rest_framework.authtoken",
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +57,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = "conf.urls"
 
 TEMPLATES = [
