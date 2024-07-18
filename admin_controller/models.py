@@ -12,7 +12,7 @@ class Media(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     media_type = models.CharField(max_length=5, choices=MEDIA_TYPE_CHOICES)
-    file = models.FileField(upload_to='media/')
+    file = models.FileField(upload_to='Story/')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "admin_auth",
     "admin_controller",
     "users",
+    "univery",
 
     #Install Apps
     "rest_framework",
@@ -59,6 +60,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://192.168.0.111:8000",
 
 ]
 
