@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
-from .models import Video
+from .models import VideoEntry
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -26,8 +26,10 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 
-class VideoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Video
-        fields = ['title', 'description', 'video_file']
-        read_only_fields = ['title', 'description']
+
+
+class VideoEntrySerializer(serializers.ModelSerializer):
+  class Meta:
+    model = VideoEntry
+    fields = ('id', 'title', 'description', 'video')
+

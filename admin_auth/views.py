@@ -1,12 +1,12 @@
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.status import HTTP_201_CREATED
 from .serializers import RegisterSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets, permissions
-from .models import Video
-from .serializers import VideoSerializer
+from rest_framework.status import HTTP_400_BAD_REQUEST
+from .serializers import VideoEntrySerializer
 
 
 class RegisterView(generics.CreateAPIView):
@@ -31,11 +31,12 @@ class LoginView(ObtainAuthToken):
             'email': user.email
         })
 
+class VideoEntryView(APIView):
+  def post(self, request):
+    serializer = VideoEntrySerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
-class VideoViewSet(viewsets.ModelViewSet):
-    queryset = Video.objects.all()
-    serializer_class = VideoSerializer
-    permission_classes = [permissions.AllowAny]
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
