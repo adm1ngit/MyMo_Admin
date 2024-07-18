@@ -7,8 +7,8 @@ class MediaListCreateView(generics.ListCreateAPIView):
     serializer_class = MediaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 class MediaDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Media.objects.all()

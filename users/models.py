@@ -34,21 +34,28 @@ class UserProfile(models.Model):
 
 
 class myPetition(models.Model):
-    pass
-
-class currentInstitute(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-class userInstitues(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    gender = models.CharField(max_length=10)
+    birth_date = models.DateField()
+    nationality = models.CharField(max_length=30)
+    ethnicity = models.CharField(max_length=30)
+    permanent_address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=20)
     faculty = models.CharField(max_length=255)
     institute = models.CharField(max_length=255)
-    routeCode = models.CharField(max_length=255, null=True, blank=True)
+    routeCode = models.CharField(max_length=255)
     routeName = models.CharField(max_length=255)
     routeType = models.CharField(max_length=120)
     language = models.CharField(max_length=120)
+
+class currentInstitute(models.Model):
+    pass
+
+class userInstitues(models.Model):
+    pass
 
     def __str__(self):
         return self.first_name

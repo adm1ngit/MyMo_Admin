@@ -11,9 +11,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = ['first_name', 'last_name', 'profile_picture', 'gender', 'birth_date', 'nationality', 'ethnicity', 'permanent_address', 'phone_number']
 
-class UserInstituesSerializer(serializers.ModelSerializer):
+class myPetitionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = userInstitues
+        model = myPetition
         fields = '__all__'
 
 
