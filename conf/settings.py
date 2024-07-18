@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-z=v*p=*&hnra%$p5-1pa3338$*6kg+seo-n1ki=*-%y3xjgb2q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.111"]
+ALLOWED_HOSTS = ["192.168.100.5"]
 
 
 # Application definition
@@ -28,27 +28,29 @@ INSTALLED_APPS = [
 
     #Local Apps
     "admin_auth",
-    "admin_controller",
     "users",
 
     #Install Apps
     "rest_framework",
     'django_filters',
     "rest_framework.authtoken",
-    'corsheaders',
+    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-    ),
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+    'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -59,6 +61,9 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://192.168.100.22",
+    "http://localhost:8000",
+    "http://192.168.100.5",
 
 ]
 
