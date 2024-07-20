@@ -31,9 +31,9 @@ class UserProfileAPIView(APIView):
 
 
 
-class UserInstituesListCreateAPIView(generics.ListCreateAPIView):
-    queryset = userInstitues.objects.all()
-    serializer_class = UserInstituesSerializer
+class myPettionListCreateAPIView(generics.ListCreateAPIView):
+    queryset = myPetition.objects.all()
+    serializer_class = myPetitionSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['institute']
 
