@@ -33,3 +33,4 @@ class VideoEntrySerializer(serializers.ModelSerializer):
     model = VideoEntry
     fields = ('id', 'title', 'description', 'video')
 
+# Commited
