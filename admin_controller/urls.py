@@ -1,6 +1,7 @@
 from django.urls import path
-from admin_controller import views
+from .views import VideoListCreateAPIView
 
 urlpatterns = [
-    path("videos/", views.VideoAppView.as_view()),
+    path('videos/', VideoListCreateAPIView.as_view(), name='video-list-create'),
 ]
+

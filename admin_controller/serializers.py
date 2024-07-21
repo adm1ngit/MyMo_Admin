@@ -1,6 +1,7 @@
-from .models import VideoApp
 from rest_framework import serializers
-class VideoAppSerializer(serializers.ModelSerializer):
+from .models import Video
+
+class VideoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = VideoApp
-        fields = '__all__'
+        model = Video
+        fields = ['id', 'title', 'description', 'video_file']

@@ -1,17 +1,19 @@
+from rest_framework import generics, request, status
 from rest_framework.response import Response
-from .models import VideoApp
-from .serializers import VideoAppSerializer
+from .models import Video
+from .serializers import VideoSerializer
 from rest_framework.views import APIView
-from rest_framework import status, permissions
+
+class VideoListCreateAPIView(APIView):
+    def get(self, request):
+        videos = Video.objects.all()
+        serializer = VideoSerializer(videos, many=True, context={'request': request})
+        return Response(serializer.data)
 
 
-class VideoAppView(APIView):
-
-    def get(self, request, format=None):
-        candidates = VideoApp.objects.all()
-        serializer = VideoAppSerializer(candidates, many=True)
-        if serializer:
-            response_data = {"videos": serializer.data}
-            return Response(response_data, status=status.HTTP_200_OK)
-
-        return Response({"error": "Not Found 🤷‍♂️"}, status=status.HTTP_404_NOT_FOUND)
+    def post(self, request):
+        serializer = VideoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
