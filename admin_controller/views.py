@@ -1,16 +1,17 @@
-from rest_framework import generics, permissions
-from .models import Media
-from .serializers import MediaSerializer
+from rest_framework.response import Response
+from .models import VideoApp
+from .serializers import VideoAppSerializer
+from rest_framework.views import APIView
+from rest_framework import status, permissions
 
-class MediaListCreateView(generics.ListCreateAPIView):
-    queryset = Media.objects.all()
-    serializer_class = MediaSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user)
+class VideoAppView(APIView):
 
-class MediaDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Media.objects.all()
-    serializer_class = MediaSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    def get(self, request, format=None):
+        candidates = VideoApp.objects.all()
+        serializer = VideoAppSerializer(candidates, many=True)
+        if serializer:
+            response_data = {"videos": serializer.data}
+            return Response(response_data, status=status.HTTP_200_OK)
+
+        return Response({"error": "Not Found 🤷‍♂️"}, status=status.HTTP_404_NOT_FOUND)

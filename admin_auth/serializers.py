@@ -31,6 +31,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 class VideoEntrySerializer(serializers.ModelSerializer):
   class Meta:
     model = VideoEntry
-    fields = ('id', 'title', 'description', 'video')
+    fields = ('title', 'description', 'video')
 
 # Commited
