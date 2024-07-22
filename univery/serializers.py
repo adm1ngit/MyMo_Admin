@@ -27,7 +27,7 @@ class InstituteSerializer(serializers.ModelSerializer):
         model = Institute
         fields = [
             'id', 'logo', 'name', 'description', 'website', 'video',
-            'photo', 'address', 'faculty_routes'
+            'photo', 'address', 'faculty_routes', 'grand', 'contract'
         ]
 
     def get_faculty_routes(self, obj):

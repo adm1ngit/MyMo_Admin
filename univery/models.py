@@ -9,6 +9,8 @@ class Institute(models.Model):
     video = models.FileField(upload_to='videos/', null=True, blank=True)
     photo = models.ImageField(upload_to='photos/', null=True, blank=True)
     address = models.CharField(max_length=255)
+    grand = models.IntegerField(null=True, blank=True)
+    contract = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name
