@@ -1,11 +1,17 @@
-from rest_framework import status
+from rest_framework import status, viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
-from .models import Institute, FacultyRoute
+from .models import Institute, FacultyRoute, ModelLogo
 from .serializers import *
 
+
+class LogoView(APIView):
+    def get(self, request):
+        Logo = ModelLogo.objects.all()
+        serializer = ModelLogoSerializer(Logo, many=True, context={'request': request})
+        return Response(serializer.data)
 
 class InstituteFacultyRouteApi(APIView):
 

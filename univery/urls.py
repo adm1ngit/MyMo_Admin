@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path("upload/logo/", LogoView.as_view(), name="logo"),
     path('', InstituteFacultyRouteApi.as_view(), name='institute-list'),
     path('<int:pk>/', InstituteFacultyRouteApi.as_view()),
     path('faculties/', FacultyRouteListApi.as_view(), name='faculty-list'),

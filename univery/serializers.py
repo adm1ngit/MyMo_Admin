@@ -1,6 +1,11 @@
 from rest_framework import serializers
-from .models import Institute, Faculty, FacultyRoute
+from .models import Institute, Faculty, FacultyRoute, ModelLogo
 
+
+class ModelLogoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ModelLogo
+        fields = ["id", "logo"]
 
 class FacultySerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,7 +31,7 @@ class InstituteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Institute
         fields = [
-            'id', 'logo', 'name', 'description', 'website', 'video',
+            'id', 'name', 'description', 'website', 'video',
             'photo', 'address', 'faculty_routes', 'grand', 'contract'
         ]
 
