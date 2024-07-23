@@ -1,13 +1,12 @@
 from django.db import models
 
 
-
 class ModelLogo(models.Model):
     logo = models.ImageField(upload_to="logo/")
 
 class Institute(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField(520)
+    description = models.TextField(max_length=520)
     website = models.URLField(max_length=255)
     video = models.FileField(upload_to='videos/', null=True, blank=True)
     photo = models.ImageField(upload_to='photos/', null=True, blank=True)

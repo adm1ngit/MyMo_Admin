@@ -9,6 +9,7 @@ urlpatterns = [
     path("admin_auth/next/page/", include("admin_auth.urls")),
     path("users/", include("users.urls")),
     path("univery/", include("univery.urls")),
+    path("students/list/", include("students_list.urls"))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

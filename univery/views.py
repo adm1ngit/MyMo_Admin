@@ -6,7 +6,6 @@ from django.shortcuts import get_object_or_404
 from .models import Institute, FacultyRoute, ModelLogo
 from .serializers import *
 
-
 class LogoView(APIView):
     def get(self, request):
         Logo = ModelLogo.objects.all()

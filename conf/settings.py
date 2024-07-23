@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "admin_controller",
     "users",
     "univery",
+    "students_list",
 
     #Install Apps
     "rest_framework",
