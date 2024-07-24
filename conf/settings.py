@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["web-production-c83e.up.railway.app"]
 
 load_dotenv()
 
@@ -70,7 +70,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://192.168.1.19",
     "http://127.0.0.1:8000",
-    "http://192.168.1.22",
+    "https://web-production-c83e.up.railway.app",
 
 ]
 
