@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["192.168.1.22"]
+ALLOWED_HOSTS = ["my-mo-admin.vercel.app"]
 
 load_dotenv()
 
@@ -70,7 +70,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://192.168.1.19",
     "http://127.0.0.1:8000",
-    "https://192.168.1.22",
+    "https://my-mo-admin.vercel.app",
 
 ]
 
