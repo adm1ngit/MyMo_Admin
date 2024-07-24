@@ -1,7 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,7 +15,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["my-mo-admin.vercel.app", "127.0.0.1"]
+ALLOWED_HOSTS = ["192.168.1.22"]
 
 load_dotenv()
 
@@ -71,16 +70,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://192.168.1.19",
     "http://127.0.0.1:8000",
-    "https://my-mo-admin.vercel.app",
+    "https://192.168.1.22",
 
 ]
-
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
-SECURE_SSL_REDIRECT = True
 
 
 CORS_ALLOW_ALL_ORIGINS = True
